@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка домашнего задания</title>
+</head>
+<body>
+    <h1>Отправка домашнего задания</h1>
+    <form action="/upload-homework/" enctype="multipart/form-data" method="post">
+        <label for="description">Описание:</label>
+        <input type="text" id="description" name="description" required>
+        <br><br>
+        <label for="file">Файл домашнего задания:</label>
+        <input type="file" id="file" name="file" required>
+        <br><br>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
