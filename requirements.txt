@@ -1,5 +1,5 @@
 fastapi[all]~=0.115.4
 requests
 coverage
-pytest
+pytest-cov
 pydantic~=2.9.2
