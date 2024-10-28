@@ -16,9 +16,8 @@ async def check():
 def register_user(self, fname: str, sname: str, login: str, password: str, role: str):
     global id
     id += 1
-    users[id] = login
+    users[id] = User(id, fname, sname, login, password, role)
 
-    pass
 def login_user(self, login: str, password: str):
     pass
 
