@@ -12,16 +12,15 @@ def test_root(client):
 
 def test_create_get_user(client):
     response = client.post("/register/", json={
-      "id": 0,
-      "first_name": "Roman",
-      "last_name": "Povolotskii",
-      "password": "Password"
+        "login": "Roman",
+        "email": "roman@mail",
+        "password": "Password"
     })
     assert response.status_code == 201
 
-    response = client.get(f"/users/{response.json()['id']}")
+    response = client.get(f"/users/0")
     assert response.status_code == 200
     response_json = response.json()
     assert response_json["Status"] == "Success"
-    assert response_json["User"]["first_name"] == "Roman"
-    assert response_json["User"]["last_name"] == "Povolotskii"
+    assert response_json["User"]["login"] == "Roman"
+    assert response_json["User"]["email"] == "roman@mail"
