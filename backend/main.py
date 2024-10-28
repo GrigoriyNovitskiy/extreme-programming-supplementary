@@ -3,26 +3,16 @@ from fastapi import FastAPI
 from backend.homework.homework import Homework
 from backend.homework.homework_serv import HomeWorkServ
 from backend.homework_result.homework_result import Homework_Result
-from backend.user.user import User
 from backend.database import users
+from backend.model.user import User
+from backend.service.user_service import UserService
 
 app = FastAPI()
 
-@app.get("/login")
-async def login():
-    return {}
 
-@app.get("/healthchecker")
+@app.get("/healthchecker/")
 async def check():
-    return {"message": "API is alive"}
-
-def register_user(self, fname: str, sname: str, login: str, password: str, role: str):
-    global id
-    id += 1
-    users[id] = User(id, fname, sname, login, password, role)
-
-def login_user(self, login: str, password: str):
-    pass
+    return {"message": "API is live"}
 
 @app.post("/upload")
 async def homework(hw: Homework):
@@ -35,6 +25,18 @@ async def homework(hw: Homework):
 async def eval_hw(eval: Homework_Result):
     return HomeWorkServ.check_homework(id=eval.id, mark=eval.mark, comment=eval.comment)
 
-@app.post("/register")
+
+@app.get("/login/")
+async def login():
+    return {}
+
+
+@app.post("/register/")
 async def register(user: User):
-    register_user(user.f_name, user.s_name, user.login, user.password, user.role)
+    UserService().register(user)
+
+
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):
+    return UserService().get_user(user_id)
+
