@@ -10,7 +10,7 @@ class HomeWorkServ:
             homework = result[r]
             resulting[r] = resulting.get(result, []) + [(homework.hw_id, homework.hw_result)]
         return resulting
-    def load_homework(self, id: int, filename):
+    def load_homework(self, id: int, filename: str):
         hw[id].filename = filename
     def check_homework(self, id: int, mark: float, comment: str="", fix: bool = True):
         result[id] = Homework_Result(id = id, mark=mark, comment=comment, fixes=fix)
